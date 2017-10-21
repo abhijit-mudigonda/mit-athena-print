@@ -27,9 +27,11 @@ echo "SIDEDNESS: $sides"
 echo "Do these all look fine? If so, press any key. If not, Ctrl+C"
 read _
 echo "What's your Athena username?"
-read $username
-
+read username
+echo "$username, huh? That's a nice name"
 echo "Copying your file over to Athena"
+echo "$username@athena.dialup.mit.edu:~"
+
 scp $filename $username@athena.dialup.mit.edu:~
 echo "Printing your file!"
 ssh $username@athena.dialup.mit.edu "bash -s $filename $copies $sides" < ./lp.sh
