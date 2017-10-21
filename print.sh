@@ -30,8 +30,6 @@ echo "What's your Athena username?"
 read username
 echo "$username, huh? That's a nice name"
 echo "Copying your file over to Athena"
-echo "$username@athena.dialup.mit.edu:~"
-
 scp $filename $username@athena.dialup.mit.edu:~
 echo "Printing your file!"
 ssh $username@athena.dialup.mit.edu "bash -s $filename $copies $sides" < ./lp.sh
