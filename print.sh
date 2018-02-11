@@ -7,6 +7,12 @@
 #that I don't want advanced settings. In any case this isn't too hard to configure
 
 filename=$1
+pageranges=$2
+copies=$3
+sides=$4
+
+
+default_pageranges=1-99999
 default_copies=1 
 default_sides="two-sided-long-edge" 
 
@@ -16,11 +22,13 @@ default_sides="two-sided-long-edge"
 #with lp, but I'm not sure how best to integrate into this 
 #flow 
 
-copies=$default_copies
-sides=$default_sides
+copies="${copies:-$default_copies}"
+sides="${sides:-$default_sides}"
+pageranges="${pageranges:-$default_pageranges}"
+
 
 echo "Printing file $filename"
-echo "PAGE RANGE: $pagerange"
+echo "PAGE RANGE: $pageranges"
 echo "COPIES: $copies"
 echo "SIDEDNESS: $sides"
 
@@ -32,7 +40,7 @@ echo "$username, huh? That's a nice name"
 echo "Copying your file over to Athena"
 scp $filename $username@athena.dialup.mit.edu:~
 echo "Printing your file!"
-ssh $username@athena.dialup.mit.edu "bash -s $filename $copies $sides" < ./lp.sh
+ssh $username@athena.dialup.mit.edu "bash -s $filename $pageranges $copies $sides" < ~/Documents/mitprint/lp.sh
 
 
 

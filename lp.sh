@@ -6,10 +6,11 @@
 
 #For readability
 filename=$1
-copies=$2
-sides=$3
+pageranges=$2
+copies=$3
+sides=$4
 
-lp -n $copies -o sides=$sides $filename
+lp -n $copies -o fit-to-page -o orientation-requested=3 -o page-ranges=$pageranges -o sides=$sides $filename
 
 #remove the file that was scp'd in by the main script
 rm $filename
