@@ -9,8 +9,9 @@ filename=$1
 pageranges=$2
 copies=$3
 sides=$4
+numberup=$5
 
-lp -n $copies -o fit-to-page -o orientation-requested=3 -o page-ranges=$pageranges -o sides=$sides $filename
+lp -n $copies -o fit-to-page -o orientation-requested=3 -o page-ranges=$pageranges -o sides=$sides -o number-up=$numberup $filename 
 
 #remove the file that was scp'd in by the main script
 rm $filename

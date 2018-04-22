@@ -10,11 +10,13 @@ filename=$1
 pageranges=$2
 copies=$3
 sides=$4
+numberup=$4
 
 
 default_pageranges=1-99999
 default_copies=1 
 default_sides="two-sided-long-edge" 
+default_numberup=1
 
 #For now, everything is set to defaults but downstream
 #might add easier ways to control this from execution. The
@@ -25,12 +27,13 @@ default_sides="two-sided-long-edge"
 copies="${copies:-$default_copies}"
 sides="${sides:-$default_sides}"
 pageranges="${pageranges:-$default_pageranges}"
-
+numberup="${numberup:-$default_numberup}"
 
 echo "Printing file $filename"
 echo "PAGE RANGE: $pageranges"
 echo "COPIES: $copies"
 echo "SIDEDNESS: $sides"
+echo "NUMBER UP: $numberup"
 
 echo "Do these all look fine? If so, press any key. If not, Ctrl+C"
 read _
@@ -40,7 +43,7 @@ echo "$username, huh? That's a nice name"
 echo "Copying your file over to Athena"
 scp $filename $username@athena.dialup.mit.edu:~
 echo "Printing your file!"
-ssh $username@athena.dialup.mit.edu "bash -s $filename $pageranges $copies $sides" < ~/Documents/mitprint/lp.sh
+ssh $username@athena.dialup.mit.edu "bash -s $filename $pageranges $copies $sides $numberup" < ~/Documents/mitprint/lp.sh
 
 
 
