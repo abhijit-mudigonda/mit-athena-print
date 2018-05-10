@@ -35,16 +35,19 @@ echo "COPIES: $copies"
 echo "SIDEDNESS: $sides"
 echo "NUMBER UP: $numberup"
 
+cp $1 printing.pdf 
+
 echo "Do these all look fine? If so, press any key. If not, Ctrl+C"
 read _
 echo "What's your Athena username?"
 read username
 echo "$username, huh? That's a nice name"
 echo "Copying your file over to Athena"
-scp $filename $username@athena.dialup.mit.edu:~
+scp printing.pdf $username@athena.dialup.mit.edu:~
 echo "Printing your file!"
-ssh $username@athena.dialup.mit.edu "bash -s $filename $pageranges $copies $sides $numberup" < ~/Documents/mitprint/lp.sh
+ssh $username@athena.dialup.mit.edu "bash -s printing.pdf $pageranges $copies $sides $numberup" < ~/Documents/mitprint/lp.sh
 
+rm printing.pdf
 
 
 
