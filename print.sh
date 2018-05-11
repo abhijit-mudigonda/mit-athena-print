@@ -10,7 +10,7 @@ filename=$1
 pageranges=$2
 copies=$3
 sides=$4
-numberup=$4
+numberup=$5
 
 
 default_pageranges=1-99999
